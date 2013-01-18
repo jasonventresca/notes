@@ -1,0 +1,13 @@
+aggregate_data --> git fetch master (for codename, scrapepipeline, and moatbot)
+
+IOError: No such file or directory: '/mnt/cache_files/prod/dev_moat_ghostery_bugs/dev_moat_ghostery_bugs.json'
+   --> run these scripts:
+            /mnt/scrapepipeline/scrapepipeline/cache/tagcache.py --prefix prod
+            /mnt/scrapepipeline/scrapepipeline/cache/ghostery.py --prefix prod --fetch-only
+            python /mnt/scrapepipeline/scrapepipeline/cache/compete.py --prefix prod --fetch-only
+
+Key Error: direct_pct: flush memcached like this:
+           sudo /etc/init.d/memcached restart 
+
+CSS gets fucked up --> run this: 
+    /mnt/codename/bin/generate_css.sh

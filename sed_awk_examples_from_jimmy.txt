@@ -1,0 +1,67 @@
+[12:54:36] fundamentalism:~$ awk '{ print $0 } /hi/ { print $0; print "Hello" }'hello
+hello
+hey
+hey
+hi
+hi
+hi
+Hello
+[12:55:04] fundamentalism:~$ awk '{ print $0 } /hi/ { print "Hello" }'Yo 
+Yo
+hi
+hi
+Hello
+ehhhi
+ehhhi
+Hello
+[12:55:56] fundamentalism:~$ awk '/hi/ { print "Hello" }'
+hello
+hey
+hi
+Hello
+[12:56:06] fundamentalism:~$ sed -e s/hi/hello/g
+hello
+hello
+hey
+hey
+hi
+hello
+ehi
+ehello
+ehig
+ehellog
+[12:56:27] fundamentalism:~$ sed -e s/ hi /hello/g
+sed: -e expression #1, char 2: unterminated `s' command
+[12:56:30] fundamentalism:~$ sed -e 's/ hi /hello/g'
+hello hi
+hello hi
+hello hi 
+hellohello
+[12:56:40] fundamentalism:~$ sed ^C 's/ hi /hello/g'
+[12:56:44] fundamentalism:~$ cat >FILE
+Hello
+hi
+hello
+Test
+hi
+[12:56:50] fundamentalism:~$ sed -i~ -e 's/hi/hello/g' FILE
+[12:57:06] fundamentalism:~$ ls
+blog/                                       experiments/        simple.sh*
+chawk/                                      FILE                stuff/
+concordia_triglotta_images_only_no_ocr.pdf  FILE~               stuff.tgz
+DEPLOYED_3                                  insurance_info.pdf
+Downloads/                                  moat/
+[12:57:07] fundamentalism:~$ cat FILE~
+Hello
+hi
+hello
+Test
+hi
+[12:57:10] fundamentalism:~$ cat FILE
+Hello
+hello
+hello
+Test
+hello
+[12:57:12] fundamentalism:~$ sed -i~ -e 's%hi%hello%g' FILE
+[12:57:26] fundamentalism:~$ rm -f FILE FILE~

@@ -1,0 +1,57 @@
+# Which branch am I in?
+$ git branch
+
+# List all branches on github
+$ git branch -a
+
+# I want to fetch the updates on github, but not have to merge them yet with my local copy
+$ git fetch                                 # 'git pull' does 'git fetch' followed by 'git merge'
+                                            # so, you don't have to merge immediately with 'git fetch'
+
+# Which files have I changed since my last commit?
+$ git status
+
+# I want to switch to a different branch to work on
+$ git checkout prod                         # not like checkout in Subversion
+
+# I'm ready to push some changes to master or prod
+$ git add newfile.py                        # (stage the changes made -- even if these files newly added recently added)
+$ git diff --cached                         # diffs between what you've staged and what you've committed
+$ git commit -m 'comments go here'          # commit to your local repo
+$ git push origin master                    # pushes your commited changes to github (ALWAYS specify 'origin master' or 'origin prod'!)
+
+# Let me stash my changes so I can do an update or whatever
+$ git stash                                 # puts your recent changes off to the side, making your local copy look identical to your last commit
+$ git update
+$ git stash pop                             # brings your recent changes back into your local copy
+
+# Throw away local changes in the current branch
+$ git checkout -f
+
+# Remove the changes made to a particular file since the last commit
+$ git checkout -- filename
+
+# Merge master into current branch (from origin = github)
+$ git pull origin master # this effectively does these two steps in one: $ git fetch; git merge origin master
+
+# I accidentally committed code to the wrong branch -- maybe I even pushed it to github -- I want to undo those commits
+$ git log # write down the commit hashes of all the commits you want to revert
+$ git revert <commit-hash-1> <commit-hash-2> <commit-hash-3...> # this reverts the code to before those commits
+$ git push origin <branch-you-fucked-up> # if you pushed the erroneous commits to github, this fixes that
+
+
+##########################################################
+##########################################################
+# Revert to a previous commit by SHA hash -- 4 steps     #
+# reset the index to the desired tree                    #
+# git reset 56e05fced                                    #
+#                                                        #
+# # move the branch pointer back to the previous HEAD    #
+# git reset --soft HEAD@{1}                              #
+#                                                        #
+# git commit -m "Revert to 56e05fced"                    #
+#                                                        #
+# Update working copy to reflect the new commit          #
+# git reset --hard                                       #
+##########################################################
+##########################################################

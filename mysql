@@ -1,0 +1,41 @@
+#######################################################################################
+## how to move mysql data dir propoerly ###############################################
+#######################################################################################
+## tell app armor to allow mysql to touch read/write to/from /mnt
+## append the following to /etc/apparmor.d/usr.sbin.mysqld
+  /mnt/log/mysql/ r,
+  /mnt/log/mysql/** rwk,
+  /mnt/mysql/ r,
+  /mnt/mysql/** rwk,
+  /mnt/tmp/ r,
+  /mnt/tmp/** rwk,
+
+## bounce app armor
+$ sudo /etc/init.d/apparmor restart
+
+## kill mysql
+$ sudo /etc/init.d/mysql stop
+
+## write down the current privileges / ownership on the mysql data dir
+$ ls -l /var/lib/mysql /mnt
+
+## move the mysql data dir
+$ sudo cp -r /var/lib/mysql /mnt
+
+## update /etc/mysql/my.cnf to indicate the new datadir
+
+## chmod mysql back to its old privileges (sudo might have fucked them up)
+$ sudo chown -R mysql:mysql /mnt/mysql/
+#######################################################################################
+#######################################################################################
+#######################################################################################
+
+
+#######################################################################################
+## how to kill a beastly query ########################################################
+#######################################################################################
+show processlist; # get the id
+kill {id};
+#######################################################################################
+#######################################################################################
+#######################################################################################

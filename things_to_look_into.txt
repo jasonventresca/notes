@@ -1,0 +1,27 @@
+codename is the web app
+scrapepipeline/scrapeipipeline/potato/connections.py
+mashed.py
+scrapepipeline/scrapepipeline/cache/ghostery.py & 
+scrapepipeline is for processing the scrape results
+
+jsbeautifier.org -> unflatten a JSON object
+
+scrapepipeline/cache - where the aggregated, streamlined data to be used for the frontend
+--> aggregate.py
+
+ghostery.py --> transforms the new ghostery file when it's published
+
+utils.py --> has class DirectPredictor --> identifies an ad as direct or not, based on ghostery bugs
+     --> has class BrandAggregator --> determines which brands are associtaed with a creative_id
+
+one aggregate slice of the data is creative_id and domain
+
+intermediate_creative
+
+domain vs hostname: domain is aol.com, hostname is travel.aol.com
+
+scrapepipeline/cache/utils.py, class Scorer
+
+cache_building
+
+scrapepipeline/potato/connections.py --> sql queries
