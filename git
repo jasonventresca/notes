@@ -55,3 +55,7 @@ $ git push origin <branch-you-fucked-up> # if you pushed the erroneous commits t
 # git reset --hard                                       #
 ##########################################################
 ##########################################################
+
+# Show each diff along with each historical commit
+$ git log -p
+
