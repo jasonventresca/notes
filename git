@@ -59,3 +59,6 @@ $ git push origin <branch-you-fucked-up> # if you pushed the erroneous commits t
 # Show each diff along with each historical commit
 $ git log -p
 
+# diff a single file across two branches
+git diff HEAD..feature/improve-search-admin /mnt/moat/search/turk_reviewer/turkreviewer.py
+
