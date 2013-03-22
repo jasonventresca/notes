@@ -62,3 +62,8 @@ $ git log -p
 # diff a single file across two branches
 git diff HEAD..feature/improve-search-admin /mnt/moat/search/turk_reviewer/turkreviewer.py
 
+# cherry picking
+git cherry-pick COMMIT_SHA
+tig # use this tool for visual branch representation of commit log
+git rebase --interactive # to squash commits, etc.
+#
