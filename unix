@@ -1,0 +1,4 @@
+# how to strace a process -- also filters strace's output with grep
+# PID is 30713 and max string size to output is 33k
+$ sudo strace -p 30713 -f -s 33000 2>&1 | grep 'date range'
+
